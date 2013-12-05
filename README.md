@@ -1,4 +1,4 @@
 android-dev
 ===========
 
-android development
+android development course
