@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hello Application</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_hello">HelloActivity</string>
+    <string name="enter_your_name">Enter your name below:</string>
+    <string name="say_hallo">Say hallo!</string>
+</resources>
