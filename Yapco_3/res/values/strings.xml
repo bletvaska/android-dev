@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Yapco</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_feed_button">Add Feed</string>
+    <string name="enter_rss_feed">Enter RSS Feed URL:</string>
+    <string name="hint_edit_text">RSS Feed URL</string>
+
+</resources>

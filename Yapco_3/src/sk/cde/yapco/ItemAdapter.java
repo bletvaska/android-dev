@@ -14,9 +14,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by mirek on 21.1.2014.
  */
-public class EpisodeAdapter extends CursorAdapter {
+public class ItemAdapter extends CursorAdapter {
 
-    public EpisodeAdapter(Context context, Cursor cursor) {
+    public ItemAdapter(Context context, Cursor cursor, int flags) {
         super(context, cursor, 0);
     }
 
@@ -59,6 +59,8 @@ public class EpisodeAdapter extends CursorAdapter {
     }
 
     private String getDurationString(Long duration) {
+        http:
+//stackoverflow.com/questions/625433/how-to-convert-milliseconds-to-x-mins-x-seconds-in-java
         return String.format("Duration: %d min, %d sec",
                 TimeUnit.MILLISECONDS.toMinutes(duration),
                 TimeUnit.MILLISECONDS.toSeconds(duration) -

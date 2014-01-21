@@ -28,7 +28,12 @@ public class ChannelListActivity extends Activity {
         Log.i(TAG, "onCreate()");
 
         this.db = (new DbHelper(this)).getReadableDatabase();
-        Cursor cursor = db.query(DbHelper.CHANNEL_TABLE_NAME, null, null, null, null, null, DbHelper.C_TITLE + " ASC");
+        Cursor cursor = db.query(
+                DbHelper.CHANNEL_TABLE_NAME,
+                null,
+                null, null,
+                null, null,
+                DbHelper.C_TITLE + " ASC");
 
         String[] from = {DbHelper.C_TITLE, DbHelper.C_DESCRIPTION};
         int[] to = {R.id.channelTitle, R.id.channelDescription};
@@ -39,12 +44,9 @@ public class ChannelListActivity extends Activity {
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Cursor cursor = (Cursor) adapterView.getItemAtPosition(i);
-                String channelId = cursor.getString(cursor.getColumnIndex(DbHelper.C_ID));
-
-                Intent intent = new Intent(view.getContext(), EpisodesListActivity.class);
-                intent.putExtra("channel_id", channelId);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(view.getContext(), ItemListActivity.class);
+                intent.putExtra("channel_id", id);
                 startActivity(intent);
             }
         });

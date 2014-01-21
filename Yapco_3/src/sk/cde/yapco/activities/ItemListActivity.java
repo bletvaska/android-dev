@@ -11,29 +11,33 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import sk.cde.yapco.DbHelper;
-import sk.cde.yapco.EpisodeAdapter;
+import sk.cde.yapco.ItemAdapter;
 import sk.cde.yapco.R;
 
 /**
  * Created by mirek on 21.1.2014.
  */
-public class EpisodesListActivity extends Activity {
+public class ItemListActivity extends Activity {
     private static final String TAG = "EpisodesListAct";
     private SQLiteDatabase db;
-    private EpisodeAdapter adapter;
+    private ItemAdapter adapter;
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.episodes_list_activity);
         Log.i(TAG, "onCreate()");
 
-        System.out.println("Showing " + getIntent().getExtras().get("channel_id"));
-
         this.db = (new DbHelper(this)).getReadableDatabase();
 
-        String[] params = {getIntent().getExtras().getString("channel_id")};
-        Cursor cursor = db.query(DbHelper.ITEM_TABLE_NAME, null, "chid=?", params, null, null, null);
-        this.adapter = new EpisodeAdapter(this, cursor);
+        Long channelId = getIntent().getExtras().getLong("channel_id");
+        String[] params = {channelId.toString()};
+        Cursor cursor = db.query(
+                DbHelper.ITEM_TABLE_NAME,
+                null,
+                "chid=?", params,
+                null, null, null);
+
+        this.adapter = new ItemAdapter(this, cursor, 0);
 
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(adapter);
