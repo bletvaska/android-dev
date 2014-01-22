@@ -19,15 +19,13 @@ import sk.cde.yapco.R;
  */
 public class ItemListActivity extends Activity {
     private static final String TAG = "EpisodesListAct";
-    private SQLiteDatabase db;
-    private ItemAdapter adapter;
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.episodes_list_activity);
         Log.i(TAG, "onCreate()");
 
-        this.db = (new DbHelper(this)).getReadableDatabase();
+        SQLiteDatabase db = (new DbHelper(this)).getReadableDatabase();
 
         Long channelId = getIntent().getExtras().getLong("channel_id");
         String[] params = {channelId.toString()};
@@ -37,7 +35,7 @@ public class ItemListActivity extends Activity {
                 "chid=?", params,
                 null, null, null);
 
-        this.adapter = new ItemAdapter(this, cursor, 0);
+        ItemAdapter adapter = new ItemAdapter(this, cursor, 0);
 
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(adapter);
@@ -52,5 +50,4 @@ public class ItemListActivity extends Activity {
             }
         });
     }
-
 }
