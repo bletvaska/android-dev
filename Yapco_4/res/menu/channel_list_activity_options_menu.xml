@@ -2,16 +2,22 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/new_feed"
-          android:icon="@android:drawable/ic_menu_add"
+          android:icon="@drawable/ic_new"
           android:title="@string/new_feed"
           android:showAsAction="ifRoom"
             />
-    <item android:id="@+id/quit"
-          android:icon="@android:drawable/ic_menu_close_clear_cancel"
-          android:title="@string/exit"/>
+    <item android:id="@+id/refresh_feed"
+          android:icon="@drawable/ic_refresh"
+          android:title="@string/new_feed"
+          android:showAsAction="ifRoom"
+            />
 
     <item android:id="@+id/about"
-          android:icon="@android:drawable/ic_menu_info_details"
+          android:icon="@drawable/ic_info"
           android:title="@string/about_application"
             />
+
+    <item android:id="@+id/quit"
+          android:icon="@drawable/ic_off"
+          android:title="@string/exit"/>
 </menu>
