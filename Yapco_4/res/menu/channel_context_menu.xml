@@ -2,19 +2,15 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/update_channel"
-          android:icon="@drawable/ic_refresh"
           android:title="@string/update_channel"
             />
     <item android:id="@+id/unsubscribe_channel"
-          android:icon="@drawable/ic_remove"
           android:title="@string/unsubscribe_channel"
             />
     <item android:id="@+id/channel_description"
-          android:icon="@drawable/ic_info"
           android:title="@string/podcast_description"
             />
     <item android:id="@+id/visit_web_page"
-          android:icon="@drawable/ic_web"
           android:title="@string/visit_web_page"
             />
 </menu>

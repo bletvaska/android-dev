@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
@@ -92,7 +93,31 @@ public class ChannelListActivity extends Activity {
         switch( item.getItemId() ){
             case R.id.visit_web_page:
                 System.out.println("visit web page");
+
+                // get channel id
+                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                Long channelId = menuInfo.id;
+                String[] params = {channelId.toString()};
+
+                System.out.println("position: " + menuInfo.position);
+
+                // select channel from db
+                Cursor cursor = db.query(
+                        DbHelper.CHANNEL_TABLE_NAME,
+                        null,
+                        "_id=?", params,
+                        null, null, null);
+
+                // get result (no check, if there is some)
+                cursor.moveToFirst();
+                String link = cursor.getString( cursor.getColumnIndex(DbHelper.C_LINK));
+
+                // create intent
+                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(link) );
+                startActivity(intent);
+
                 break;
+
             case R.id.channel_description:
                 System.out.println("description of selected channel");
                 break;

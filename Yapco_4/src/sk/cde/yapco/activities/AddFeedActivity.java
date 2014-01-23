@@ -37,6 +37,7 @@ public class AddFeedActivity extends Activity {
             ParseFeed pf = new ParseFeed();
             pf.execute(feed);
             insertChannel(pf.get());
+            finish();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
