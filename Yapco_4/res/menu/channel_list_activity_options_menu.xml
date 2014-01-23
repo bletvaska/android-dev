@@ -4,12 +4,12 @@
     <item android:id="@+id/new_feed"
           android:icon="@drawable/ic_new"
           android:title="@string/new_feed"
-          android:showAsAction="ifRoom"
+          android:showAsAction="always"
             />
     <item android:id="@+id/refresh_feed"
           android:icon="@drawable/ic_refresh"
           android:title="@string/new_feed"
-          android:showAsAction="ifRoom"
+          android:showAsAction="always"
             />
 
     <item android:id="@+id/about"

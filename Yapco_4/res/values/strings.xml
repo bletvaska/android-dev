@@ -9,5 +9,9 @@
     <string name="new_feed">Add Feed</string>
     <string name="exit">Exit</string>
     <string name="about_application">About Application</string>
+    <string name="update_channel">Update Episodes</string>
+    <string name="unsubscribe_channel">Unsubscribe</string>
+    <string name="podcast_description">Podcast Description</string>
+    <string name="visit_web_page">Visit Web Page</string>
 
 </resources>

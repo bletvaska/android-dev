@@ -6,10 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -53,6 +50,8 @@ public class ChannelListActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        registerForContextMenu(lv);
     }
 
     @Override
@@ -77,6 +76,33 @@ public class ChannelListActivity extends Activity {
             default:
                 super.onOptionsItemSelected(item);
         }
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.channel_context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch( item.getItemId() ){
+            case R.id.visit_web_page:
+                System.out.println("visit web page");
+                break;
+            case R.id.channel_description:
+                System.out.println("description of selected channel");
+                break;
+            case R.id.unsubscribe_channel:
+                System.out.println("unsubscribe");
+                break;
+            default:
+                return super.onContextItemSelected(item);
+        }
+
         return true;
     }
 
