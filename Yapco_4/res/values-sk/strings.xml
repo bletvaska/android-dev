@@ -7,4 +7,7 @@
     <string name="unsubscribe_channel">Odhlásiť odber</string>
     <string name="podcast_description">Info o kanáli</string>
     <string name="visit_web_page">Navštíviť stránku kanála</string>
+    <string name="mark_all_as_read">Označiť všetko ako prečítané</string>
+    <string name="play">Prehrať</string>
+    <string name="mark_as_read">Označiť ako prečítané</string>
 </resources>

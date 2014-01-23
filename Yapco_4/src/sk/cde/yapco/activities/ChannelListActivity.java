@@ -8,9 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.*;
 import sk.cde.yapco.DbHelper;
 import sk.cde.yapco.R;
 
@@ -71,7 +69,7 @@ public class ChannelListActivity extends Activity {
                 break;
 
             case R.id.quit:
-                System.exit(0);
+                finish();
                 break;
 
             default:
@@ -84,6 +82,11 @@ public class ChannelListActivity extends Activity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
+
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        String title = ((TextView)info.targetView.findViewById(R.id.channelTitle)).getText().toString();
+        menu.setHeaderTitle(title);
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.channel_context_menu, menu);
     }
@@ -92,14 +95,10 @@ public class ChannelListActivity extends Activity {
     public boolean onContextItemSelected(MenuItem item) {
         switch( item.getItemId() ){
             case R.id.visit_web_page:
-                System.out.println("visit web page");
-
                 // get channel id
                 AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
                 Long channelId = menuInfo.id;
                 String[] params = {channelId.toString()};
-
-                System.out.println("position: " + menuInfo.position);
 
                 // select channel from db
                 Cursor cursor = db.query(
