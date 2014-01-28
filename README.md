@@ -9,6 +9,7 @@ structure:
 * Yapco 2 - SQL repository for feeds and episodes (items), add new feed and new episodes
 * Yapco 3 - ListView for feeds and episodes, SimpleCursorAdapter and custom CursorAdapter
 * Yapco 4 - menu system and navigation
+* Yapco 5 - refactoring and notifications
 
 ## Icons Used In Yapco Project
 
