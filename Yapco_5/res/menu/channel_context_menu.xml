@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/update_channel"
+          android:title="@string/update_channel"
+          android:onClick="updateChannel"
+            />
+    <item android:id="@+id/unsubscribe_channel"
+          android:title="@string/unsubscribe_channel"
+          android:onClick="unsubscribeFromChannel"
+            />
+    <item android:id="@+id/channel_description"
+          android:title="@string/podcast_description"
+          android:onClick="viewChannelDescription"
+            />
+    <item android:id="@+id/visit_web_page"
+          android:title="@string/visit_web_page"
+          android:onClick="visitChannelWebPage"
+            />
+</menu>

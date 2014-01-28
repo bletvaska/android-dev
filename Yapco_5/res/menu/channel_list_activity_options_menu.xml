@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/new_feed"
+          android:icon="@drawable/ic_new"
+          android:title="@string/new_feed"
+          android:showAsAction="always"
+          android:onClick="addNewFeed"
+            />
+    <item android:id="@+id/refresh_feed"
+          android:icon="@drawable/ic_refresh"
+          android:title="@string/update_channel"
+          android:showAsAction="always"
+          android:onClick="updateAllChannels"
+            />
+
+    <item android:id="@+id/about"
+          android:icon="@drawable/ic_info"
+          android:title="@string/about_application"
+            />
+
+    <item android:id="@+id/quit"
+          android:icon="@drawable/ic_off"
+          android:title="@string/exit"
+          android:onClick="exitApplication"
+            />
+</menu>

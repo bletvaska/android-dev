@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="new_feed">Pridať kanál</string>
+    <string name="exit">Ukončiť</string>
+    <string name="about_application">O aplikácii</string>
+    <string name="update_channel">Aktualizovať epizódy</string>
+    <string name="unsubscribe_channel">Odhlásiť odber</string>
+    <string name="podcast_description">Info o kanáli</string>
+    <string name="visit_web_page">Navštíviť stránku kanála</string>
+    <string name="mark_all_as_read">Označiť všetko ako prečítané</string>
+    <string name="play">Prehrať</string>
+    <string name="mark_as_read">Označiť ako prečítané</string>
+</resources>
