@@ -16,5 +16,6 @@
     <string name="mark_all_as_read">Mark all read</string>
     <string name="play">Play</string>
     <string name="mark_as_read">Mark as read</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

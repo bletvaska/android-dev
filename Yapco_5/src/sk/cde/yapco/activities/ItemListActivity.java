@@ -50,19 +50,8 @@ public class ItemListActivity extends Activity {
         refresh();
     }
 
-    private void refresh() {
-        Long channelId = getIntent().getExtras().getLong("channel_id");
-        String[] params = {channelId.toString()};
-        Cursor cursor = db.query(
-                DbHelper.ITEM_TABLE_NAME,
-                null,
-                "chid=?", params,
-                null, null, null);
 
-        ItemAdapter adapter = new ItemAdapter(this, cursor, 0);
-        ListView lv = (ListView) findViewById(R.id.listView);
-        lv.setAdapter(adapter);
-    }
+    // =================================== options menu and it's selection handling
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,6 +74,9 @@ public class ItemListActivity extends Activity {
         }
         return true;
     }
+
+
+    // =================================== context menu and it's selection handling
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -135,5 +127,22 @@ public class ItemListActivity extends Activity {
             }
         }
         return super.onContextItemSelected(item);
+    }
+
+
+    // =================================== helper methods
+
+    private void refresh() {
+        Long channelId = getIntent().getExtras().getLong("channel_id");
+        String[] params = {channelId.toString()};
+        Cursor cursor = db.query(
+                DbHelper.ITEM_TABLE_NAME,
+                null,
+                "chid=?", params,
+                null, null, null);
+
+        ItemAdapter adapter = new ItemAdapter(this, cursor, 0);
+        ListView lv = (ListView) findViewById(R.id.listView);
+        lv.setAdapter(adapter);
     }
 }
