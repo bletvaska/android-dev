@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Yapco_1/Yapco_1.iml" filepath="$PROJECT_DIR$/Yapco_1/Yapco_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Yapco_2/Yapco_2.iml" filepath="$PROJECT_DIR$/Yapco_2/Yapco_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Yapco_3/Yapco_3.iml" filepath="$PROJECT_DIR$/Yapco_3/Yapco_3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Yapco_4/Yapco_4.iml" filepath="$PROJECT_DIR$/Yapco_4/Yapco_4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Yapco_5/Yapco_5.iml" filepath="$PROJECT_DIR$/Yapco_5/Yapco_5.iml" />
+    </modules>
+  </component>
+</project>
+

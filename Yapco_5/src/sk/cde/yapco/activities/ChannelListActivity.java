@@ -89,7 +89,6 @@ public class ChannelListActivity extends Activity {
         });
 
         builder.show();
-
     }
 
     public void updateAllChannels(MenuItem item){

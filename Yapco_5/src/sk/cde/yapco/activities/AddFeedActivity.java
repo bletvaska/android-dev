@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.EditText;
 import sk.cde.yapco.FeedData;
 import sk.cde.yapco.R;
-import sk.cde.yapco.rss.Channel;
 import sk.cde.yapco.rss.RssFeedParser;
 
 import java.util.concurrent.ExecutionException;
@@ -30,18 +29,14 @@ public class AddFeedActivity extends Activity {
         try {
             RssFeedParser.ParseFeed pf = new RssFeedParser.ParseFeed();
             pf.execute(feed);
-            insertChannel(pf.get());
-            finish();
+
+            FeedData fd = new FeedData(this);
+            fd.insertChannel(pf.get());
+             finish();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-    }
-
-
-    private void insertChannel(Channel channel) {
-        FeedData fd = new FeedData(this);
-        fd.insertChannel( channel );
     }
 }

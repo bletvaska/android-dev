@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import sk.cde.yapco.FeedData;
 import sk.cde.yapco.ItemAdapter;
+import sk.cde.yapco.rss.Item;
 import sk.cde.yapco.R;
 
 /**
@@ -91,44 +92,35 @@ public class ItemListActivity extends Activity {
 
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
-        // extract item id
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
-        Long itemId = menuInfo.id;
-        String[] params = {itemId.toString()};
-
-        // select item from db
-        FeedData fd = new FeedData(this);
-        sk.cde.yapco.rss.Item item = fd.getItem(itemId);
+        Item item = feedData.getItem(menuInfo.id);
 
         switch( menuItem.getItemId() ){
             case R.id.visit_web_page:{
                 Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(item.link) );
                 startActivity(intent);
-
-                return true;
+                break;
             }
 
             case R.id.play_item:{
                 Intent intent = new Intent( Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.parse(item.mediaUrl), item.mediaType);
                 startActivity(intent);
-
-                return true;
+                break;
             }
+
+            default:
+                return false;
         }
 
-        return false;
+        return true;
     }
 
 
     // =================================== helper methods
 
     private void refresh() {
-        Long channelId = getIntent().getExtras().getLong("channel_id");
-        String[] params = {channelId.toString()};
-
-        Cursor cursor = feedData.queryItemsFromChannel(channelId);
-
+        Cursor cursor = feedData.queryItemsFromChannel(getIntent().getExtras().getLong("channel_id"));
         ItemAdapter adapter = new ItemAdapter(this, cursor, 0);
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(adapter);
