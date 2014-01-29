@@ -5,29 +5,29 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import sk.cde.yapco.DbHelper;
+import sk.cde.yapco.FeedData;
 import sk.cde.yapco.R;
-import sk.cde.yapco.rss.RssFeedParser;
+import sk.cde.yapco.rss.Channel;
 
 /**
  * Created by mirek on 21.1.2014.
  */
 public class ChannelListActivity extends Activity {
     private static final String TAG = "ChannelListActivity";
-    private SimpleCursorAdapter adapter;
-    private SQLiteDatabase db;
+    private FeedData feedData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.channel_list_activity);
         Log.i(TAG, "onCreate()");
+
+        this.feedData = new FeedData(this);
 
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,7 +93,7 @@ public class ChannelListActivity extends Activity {
     }
 
     public void updateAllChannels(MenuItem item){
-        DbHelper.refreshAllChannels(this);
+        feedData.refreshAllChannels();
         refresh();
     }
 
@@ -120,53 +120,36 @@ public class ChannelListActivity extends Activity {
     }
 
     public void visitChannelWebPage(MenuItem item){
-        // get channel id
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Long channelId = menuInfo.id;
-        String[] params = {channelId.toString()};
 
         // select channel from db
-        Cursor cursor = db.query(
-                DbHelper.CHANNEL_TABLE_NAME,
-                null,
-                "_id=?", params,
-                null, null, null);
-
-        // get result (no check, if there is some)
-        cursor.moveToFirst();
-        String link = cursor.getString( cursor.getColumnIndex(DbHelper.C_LINK));
+        Channel channel = feedData.getChannel(menuInfo.id);
 
         // create intent
-        Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(link) );
+        Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(channel.link) );
         startActivity(intent);
     }
 
     public void updateChannel(MenuItem item){
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        DbHelper.refreshChannel(this, menuInfo.id);
+        feedData.refreshChannel(menuInfo.id);
         refresh();
     }
 
     public void unsubscribeFromChannel(MenuItem item){
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        DbHelper.unsubscribeChannel(this, menuInfo.id);
+        feedData.deleteChannel(menuInfo.id);
         refresh();
     }
 
     // ================================= helper methods
 
     private void refresh(){
-        this.db = (new DbHelper(this)).getReadableDatabase();
-        Cursor cursor = db.query(
-                DbHelper.CHANNEL_TABLE_NAME,
-                null,
-                null, null,
-                null, null,
-                DbHelper.C_TITLE + " ASC");
+        Cursor cursor = feedData.queryChannels();
 
-        String[] from = {DbHelper.C_TITLE, DbHelper.C_DESCRIPTION};
+        String[] from = {FeedData.C_TITLE, FeedData.C_DESCRIPTION};
         int[] to = {R.id.channelTitle, R.id.channelDescription};
-        this.adapter = new SimpleCursorAdapter(this, R.layout.channel_row, cursor, from, to, 0);
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.channel_row, cursor, from, to, 0);
 
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(adapter);

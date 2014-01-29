@@ -25,15 +25,15 @@ public class ItemAdapter extends CursorAdapter {
 
         // set title
         TextView titleView = (TextView) row.findViewById(R.id.episodeTitle);
-        titleView.setText(cursor.getString(cursor.getColumnIndex(DbHelper.I_TITLE)));
+        titleView.setText(cursor.getString(cursor.getColumnIndex(FeedData.C_TITLE)));
 
         // set meta
         TextView metaView = (TextView) row.findViewById(R.id.episodeMeta);
-        Long duration = cursor.getLong(cursor.getColumnIndex(DbHelper.I_MEDIA_LENGTH));
+        Long duration = cursor.getLong(cursor.getColumnIndex(FeedData.C_MEDIA_LENGTH));
         metaView.setText(getHumanReadableByteCount(duration));
 
         // set tag
-        row.setTag(cursor.getString(cursor.getColumnIndex(DbHelper.I_MEDIA_URL)));
+        row.setTag(cursor.getString(cursor.getColumnIndex(FeedData.C_MEDIA_URL)));
 
         return row;
     }
@@ -42,15 +42,15 @@ public class ItemAdapter extends CursorAdapter {
     public void bindView(View row, Context context, Cursor cursor) {
         // set title
         TextView titleView = (TextView) row.findViewById(R.id.episodeTitle);
-        titleView.setText(cursor.getString(cursor.getColumnIndex(DbHelper.I_TITLE)));
+        titleView.setText(cursor.getString(cursor.getColumnIndex(FeedData.C_TITLE)));
 
         // set meta
         TextView metaView = (TextView) row.findViewById(R.id.episodeMeta);
-        Long duration = cursor.getLong(cursor.getColumnIndex(DbHelper.I_MEDIA_LENGTH));
+        Long duration = cursor.getLong(cursor.getColumnIndex(FeedData.C_MEDIA_LENGTH));
         metaView.setText(getHumanReadableByteCount(duration));
 
         // set tag
-        row.setTag(cursor.getString(cursor.getColumnIndex(DbHelper.I_MEDIA_URL)));
+        row.setTag(cursor.getString(cursor.getColumnIndex(FeedData.C_MEDIA_URL)));
     }
 
     private String getHumanReadableByteCount(Long bytes) {

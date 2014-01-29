@@ -3,7 +3,6 @@ package sk.cde.yapco.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +10,7 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import sk.cde.yapco.DbHelper;
+import sk.cde.yapco.FeedData;
 import sk.cde.yapco.ItemAdapter;
 import sk.cde.yapco.R;
 
@@ -20,14 +19,14 @@ import sk.cde.yapco.R;
  */
 public class ItemListActivity extends Activity {
     private static final String TAG = "EpisodesListAct";
-    private SQLiteDatabase db;
+    private FeedData feedData;
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.episodes_list_activity);
         Log.i(TAG, "onCreate()");
 
-        this.db = (new DbHelper(this)).getReadableDatabase();
+        this.feedData = new FeedData(this);
 
         ListView lv = (ListView) findViewById(R.id.listView);
 
@@ -65,7 +64,7 @@ public class ItemListActivity extends Activity {
         switch( item.getItemId() ){
             // refresh items in current podcast
             case R.id.refresh_feed:
-                DbHelper.refreshChannel(this, getIntent().getExtras().getLong("channel_id") );
+                feedData.refreshChannel(getIntent().getExtras().getLong("channel_id") );
                 refresh();
                 break;
 
@@ -91,42 +90,34 @@ public class ItemListActivity extends Activity {
     }
 
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onContextItemSelected(MenuItem menuItem) {
         // extract item id
-        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Long channelId = menuInfo.id;
-        String[] params = {channelId.toString()};
+        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) menuItem.getMenuInfo();
+        Long itemId = menuInfo.id;
+        String[] params = {itemId.toString()};
 
         // select item from db
-        Cursor cursor = db.query(
-                DbHelper.ITEM_TABLE_NAME,
-                null,
-                "_id=?", params,
-                null, null, null);
+        FeedData fd = new FeedData(this);
+        sk.cde.yapco.rss.Item item = fd.getItem(itemId);
 
-        // get result (no check, if there is some)
-        cursor.moveToFirst();
-
-        switch( item.getItemId() ){
+        switch( menuItem.getItemId() ){
             case R.id.visit_web_page:{
-                String link = cursor.getString( cursor.getColumnIndex(DbHelper.I_LINK));
-                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(link) );
+                Intent intent = new Intent( Intent.ACTION_VIEW, Uri.parse(item.link) );
                 startActivity(intent);
 
                 return true;
             }
 
             case R.id.play_item:{
-                String mediaUrl = cursor.getString( cursor.getColumnIndex(DbHelper.I_MEDIA_URL));
-                String mediaType = cursor.getString( cursor.getColumnIndex(DbHelper.I_MEDIA_TYPE));
                 Intent intent = new Intent( Intent.ACTION_VIEW);
-                intent.setDataAndType(Uri.parse(mediaUrl), mediaType);
+                intent.setDataAndType(Uri.parse(item.mediaUrl), item.mediaType);
                 startActivity(intent);
 
                 return true;
             }
         }
-        return super.onContextItemSelected(item);
+
+        return false;
     }
 
 
@@ -135,11 +126,8 @@ public class ItemListActivity extends Activity {
     private void refresh() {
         Long channelId = getIntent().getExtras().getLong("channel_id");
         String[] params = {channelId.toString()};
-        Cursor cursor = db.query(
-                DbHelper.ITEM_TABLE_NAME,
-                null,
-                "chid=?", params,
-                null, null, null);
+
+        Cursor cursor = feedData.queryItemsFromChannel(channelId);
 
         ItemAdapter adapter = new ItemAdapter(this, cursor, 0);
         ListView lv = (ListView) findViewById(R.id.listView);
