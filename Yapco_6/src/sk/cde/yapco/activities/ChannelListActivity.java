@@ -114,8 +114,15 @@ public class ChannelListActivity extends Activity {
 
     public void viewChannelDescription(MenuItem item ){
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Long channelId = menuInfo.id;
-        System.out.println(">>> channel description for " + channelId);
+        Channel channel = repository.getChannel(menuInfo.id);
+
+        Intent intent = new Intent(this, ChannelInfoActivity.class);
+        intent.putExtra("title", channel.title);
+        intent.putExtra("description", channel.description);
+        intent.putExtra("link", channel.link);
+        intent.putExtra("image", channel.imageLocation);
+        intent.putExtra("channel_id", menuInfo.id);
+        startActivity(intent);
     }
 
     public void visitChannelWebPage(MenuItem item){

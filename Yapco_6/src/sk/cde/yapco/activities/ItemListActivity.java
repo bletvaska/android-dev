@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import sk.cde.yapco.Repository;
 import sk.cde.yapco.ItemAdapter;
+import sk.cde.yapco.rss.Channel;
 import sk.cde.yapco.rss.Item;
 import sk.cde.yapco.R;
 
@@ -62,11 +63,24 @@ public class ItemListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        long channelId = getIntent().getExtras().getLong("channel_id");
+
         switch( item.getItemId() ){
             // refresh items in current podcast
             case R.id.refresh_feed:
-                repository.refreshChannel(getIntent().getExtras().getLong("channel_id"));
+                repository.refreshChannel(channelId);
                 refresh();
+                break;
+
+            case R.id.channel_description:
+                Channel channel = repository.getChannel(channelId);
+                Intent intent = new Intent(this, ChannelInfoActivity.class);
+                intent.putExtra("title", channel.title);
+                intent.putExtra("description", channel.description);
+                intent.putExtra("link", channel.link);
+                intent.putExtra("image", channel.imageLocation);
+                intent.putExtra("channel_id", channelId);
+                startActivity(intent);
                 break;
 
             default:

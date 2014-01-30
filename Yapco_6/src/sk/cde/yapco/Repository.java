@@ -21,12 +21,12 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by mirek on 14.1.2014.
  */
-public class FeedData {
-    private static String TAG = "FeedData";
+public class Repository {
+    private static String TAG = "Repository";
 
     // table names
     public static final String CHANNEL_TABLE_NAME = "channel";
-    public static final String ITEM_TABLE_NAME = "item";
+    public static final String ITEM_TABLE_NAME    = "item";
 
     // column names
     public static final String C_ID             = "_id";
@@ -39,12 +39,13 @@ public class FeedData {
     public static final String C_MEDIA_TYPE     = "mediaType";
     public static final String C_MEDIA_LENGTH   = "mediaLength";
     public static final String C_CHID           = "chid";
+    public static final String C_IMAGE_LOCATION = "imageLocation";
 
     private DbHelper dbHelper;
     private Context context;
     private SQLiteDatabase db;
 
-    public FeedData(Context context){
+    public Repository(Context context){
         this.context = context;
         this.dbHelper = new DbHelper();
     }
@@ -107,18 +108,18 @@ public class FeedData {
         // insert channel first
         ContentValues values = new ContentValues();
 
-        values.put(FeedData.C_TITLE, channel.title);
-        values.put(FeedData.C_LINK, channel.link);
-        values.put(FeedData.C_DESCRIPTION, channel.description);
-        values.put(FeedData.C_RSS_FEED, channel.podcastUrl);
+        values.put(Repository.C_TITLE, channel.title);
+        values.put(Repository.C_LINK, channel.link);
+        values.put(Repository.C_DESCRIPTION, channel.description);
+        values.put(Repository.C_RSS_FEED, channel.podcastUrl);
+        values.put(Repository.C_IMAGE_LOCATION, channel.imageLocation);
 
-        long rowId = db.insert(FeedData.CHANNEL_TABLE_NAME, null, values);
+        long rowId = db.insert(Repository.CHANNEL_TABLE_NAME, null, values);
         Log.i(TAG, String.format("Channel '%s' inserted with rowid %d", channel.title, rowId));
 
         // insert all of the items
-        for (Item item : channel) {
+        for (Item item : channel)
             insertItem(rowId, item);
-        }
 
         return rowId;
     }
@@ -150,22 +151,23 @@ public class FeedData {
 
     public Cursor queryChannels() {
         db = dbHelper.getReadableDatabase();
-        return db.query( FeedData.CHANNEL_TABLE_NAME, null, null, null, null, null, FeedData.C_TITLE + " ASC");
+        return db.query( Repository.CHANNEL_TABLE_NAME, null, null, null, null, null, Repository.C_TITLE + " ASC");
     }
 
     public Channel getChannel(Long channelId) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query( FeedData.CHANNEL_TABLE_NAME, null,
+        Cursor cursor = db.query( Repository.CHANNEL_TABLE_NAME, null,
                 "_id=?", new String[]{channelId.toString()}, null, null, null);
 
         cursor.moveToFirst();
 
         return new Channel(
-                cursor.getString(cursor.getColumnIndex(FeedData.C_RSS_FEED)),
-                cursor.getString(cursor.getColumnIndex(FeedData.C_TITLE)),
-                cursor.getString(cursor.getColumnIndex(FeedData.C_DESCRIPTION)),
-                cursor.getString(cursor.getColumnIndex(FeedData.C_LINK)),
+                cursor.getString(cursor.getColumnIndex(Repository.C_RSS_FEED)),
+                cursor.getString(cursor.getColumnIndex(Repository.C_TITLE)),
+                cursor.getString(cursor.getColumnIndex(Repository.C_DESCRIPTION)),
+                cursor.getString(cursor.getColumnIndex(Repository.C_LINK)),
+                cursor.getString(cursor.getColumnIndex(Repository.C_IMAGE_LOCATION)),
                 null
         );
     }
@@ -174,7 +176,7 @@ public class FeedData {
         db = dbHelper.getReadableDatabase();
 
         return db.query(
-                FeedData.ITEM_TABLE_NAME,
+                Repository.ITEM_TABLE_NAME,
                 null,
                 "chid=?", new String[]{channelId.toString()},
                 null, null, null);
@@ -183,7 +185,7 @@ public class FeedData {
     public Item getItem(Long itemId) {
         db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query( FeedData.ITEM_TABLE_NAME, null,
+        Cursor cursor = db.query( Repository.ITEM_TABLE_NAME, null,
                 "_id=?", new String[]{itemId.toString()},
                 null, null, null);
 
@@ -203,7 +205,7 @@ public class FeedData {
 
     private class DbHelper extends SQLiteOpenHelper {
         private static final String DB_NAME = "database.db";
-        private static final int DB_VERSION = 21;
+        private static final int DB_VERSION = 23;
 
         public DbHelper() {
             super(context, DB_NAME, null, DB_VERSION);
@@ -229,40 +231,44 @@ public class FeedData {
             );
 
             String createTableChannelQuery = String.format( "CREATE TABLE %s ( " +
-                    "%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT UNIQUE )",
-                    CHANNEL_TABLE_NAME, C_ID, C_TITLE, C_LINK, C_DESCRIPTION, C_RSS_FEED
+                    "%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT UNIQUE, %s TEXT )",
+                    CHANNEL_TABLE_NAME, C_ID, C_TITLE, C_LINK, C_DESCRIPTION, C_RSS_FEED, C_IMAGE_LOCATION
             );
 
             db.execSQL(createTableChannelQuery);
             db.execSQL(createTableItemQuery);
 
             // Java portál
-            db.execSQL("INSERT INTO channel (title, link, description, rssFeed) VALUES(" +
+            db.execSQL("INSERT INTO channel (title, link, description, rssFeed, imageLocation) VALUES(" +
                     "'Java portál', " +
                     "'http://www.java.cz', " +
                     "'Portál o programovacím jazyku Java a souvisejích technologiích (JAVA, JSP, XML, XSLT, HTML, EJB, SQL)', " +
-                    "'http://java.cz/rss-2.0/articles.do?articleTypeId=2682&displayDownloads=true')");
+                    "'http://java.cz/rss-2.0/articles.do?articleTypeId=2682&displayDownloads=true', " +
+                    "'http://www.java.cz/img/rss-logo.png' )");
 
             // Android Central Podcast
-            db.execSQL("INSERT INTO channel (title, link, description, rssFeed) VALUES(" +
+            db.execSQL("INSERT INTO channel (title, link, description, rssFeed, imageLocation) VALUES(" +
                     "'Android Central Podcast', " +
                     "'http://www.androidcentral.com', " +
                     "'Android podcast - Get all the latest news on the Android Platform with Phil and Mickey: Android Apps, the Droid, Nexus One, and more.', " +
-                    "'http://feeds.feedburner.com/AndroidCentralPodcast?format=xml')");
+                    "'http://feeds.feedburner.com/AndroidCentralPodcast?format=xml'," +
+                    "'http://www.mobilenations.com/broadcasting/podcast_android_central_144.jpg' )");
 
             // English as a Second Language (ESL) Podcast - Learn English Online
-            db.execSQL("INSERT INTO channel (title, link, description, rssFeed) VALUES(" +
+            db.execSQL("INSERT INTO channel (title, link, description, rssFeed, imageLocation) VALUES(" +
                     "'English as a Second Language (ESL) Podcast - Learn English Online', " +
                     "'http://www.eslpod.com/index.html', " +
                     "'A podcast for those wanting to learn or improve their English - great for any ESL or EFL learner.  Visit us at http://www.eslpod.com.', " +
-                    "'http://feeds.feedburner.com/EnglishAsASecondLanguagePodcast?format=xml')");
+                    "'http://feeds.feedburner.com/EnglishAsASecondLanguagePodcast?format=xml'," +
+                    "'http://www.eslpod.com/iTunesLogos/ESLPodcast.jpg')");
 
             // The Linux Action Show! MP3
-            db.execSQL("INSERT INTO channel (title, link, description, rssFeed) VALUES(" +
+            db.execSQL("INSERT INTO channel (title, link, description, rssFeed, imageLocation) VALUES(" +
                     "'The Linux Action Show! MP3', " +
                     "'http://www.jupiterbroadcasting.com', " +
                     "'Audio versions of The Linux Action Show! A show that covers everything geeks care about in the open source and Linux world. Get a solid dose of Linux, gadgets, news events and much more!', " +
-                    "'http://feeds2.feedburner.com/TheLinuxActionShow')");
+                    "'http://feeds2.feedburner.com/TheLinuxActionShow'," +
+                    "'http://www.jupiterbroadcasting.com/images/LASBadge-Audio.jpg')");
         }
 
         @Override

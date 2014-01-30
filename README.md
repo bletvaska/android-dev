@@ -10,6 +10,7 @@ structure:
 * __Yapco 3__ - ListView for feeds and episodes, SimpleCursorAdapter and custom CursorAdapter
 * __Yapco 4__ - menu system and navigation
 * __Yapco 5__ - refactoring and notifications
+* __Yapco 6__ - services
 
 ## Icons Used In Yapco Project
 
