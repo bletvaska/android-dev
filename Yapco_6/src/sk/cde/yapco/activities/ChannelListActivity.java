@@ -12,7 +12,8 @@ import android.view.*;
 import android.widget.*;
 import sk.cde.yapco.Repository;
 import sk.cde.yapco.R;
-import sk.cde.yapco.UpdaterService;
+import sk.cde.yapco.services.RefreshService;
+import sk.cde.yapco.services.UpdaterService;
 import sk.cde.yapco.rss.Channel;
 
 /**
@@ -78,6 +79,7 @@ public class ChannelListActivity extends Activity {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                stopUpdaterService(null);
                 finish();
             }
         });
@@ -157,6 +159,11 @@ public class ChannelListActivity extends Activity {
     public void stopUpdaterService(MenuItem item){
         Intent intent = new Intent(this, UpdaterService.class);
         stopService(intent);
+    }
+
+    public void startRefreshService(MenuItem item){
+        Intent intent = new Intent( this, RefreshService.class);
+        startService(intent);
     }
 
     // ================================= helper methods

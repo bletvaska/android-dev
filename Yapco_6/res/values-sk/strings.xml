@@ -13,4 +13,5 @@
     <string name="start_service">Start Updater Service</string>
     <string name="start_updater_service">Stop Updater Service</string>
     <string name="stop_updater_service">Stop Updater Service</string>
+    <string name="refresh_service">Refresh Service</string>
 </resources>

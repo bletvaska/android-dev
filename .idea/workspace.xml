@@ -41,13 +41,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27ab8f4a-a623-4569-ad49-230c18c2f6b8" name="Default" comment="- added &quot;white&quot; icons from https://github.com/svenkapudija/Androton-Action-Bar-Icons">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/UpdaterService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/RefreshService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/UpdaterService.java" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/UpdaterService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/AndroidManifest.xml" afterPath="$PROJECT_DIR$/Yapco_6/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_5/src/sk/cde/yapco/Repository.java" afterPath="$PROJECT_DIR$/Yapco_5/src/sk/cde/yapco/Repository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/Repository.java" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/Repository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/rss/RssFeedParser.java" afterPath="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/rss/RssFeedParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml" afterPath="$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/res/values/strings.xml" afterPath="$PROJECT_DIR$/Yapco_6/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Yapco_6/res/values-sk/strings.xml" afterPath="$PROJECT_DIR$/Yapco_6/res/values-sk/strings.xml" />
@@ -117,29 +114,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UpdaterService.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/UpdaterService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="44" selection-start="516" selection-end="516" vertical-scroll-proportion="0.48736462" vertical-offset="0" max-vertical-offset="810">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Repository.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/Repository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="108" selection-start="5657" selection-end="5657" vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4515">
+            <state line="150" column="108" selection-start="5657" selection-end="5657" vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4260">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="episode_list_activity_options_menu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/episode_list_activity_options_menu.xml">
+      <file leaf-file-name="channel_list_activity_options_menu.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="24" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="375">
-              <folding />
+            <state line="31" column="0" selection-start="1038" selection-end="1191" vertical-scroll-proportion="-14.48" vertical-offset="103" max-vertical-offset="705">
+              <folding>
+                <element signature="e#209#227#0" expanded="true" />
+                <element signature="e#433#457#0" expanded="true" />
+                <element signature="e#661#688#0" expanded="true" />
+                <element signature="e#777#808#0" expanded="true" />
+                <element signature="e#944#974#0" expanded="true" />
+                <element signature="e#1103#1128#0" expanded="true" />
+                <element signature="e#1292#1306#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,16 +143,37 @@
       <file leaf-file-name="ChannelListActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="5" selection-start="4744" selection-end="4744" vertical-scroll-proportion="0.0" vertical-offset="2145" max-vertical-offset="2700">
+            <state line="163" column="4" selection-start="5389" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="1863" max-vertical-offset="2490">
+              <folding>
+                <element signature="e#2347#2360#0" expanded="true" />
+                <element signature="e#2627#2642#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdaterService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/UpdaterService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="13" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="885">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RssFeedParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/rss/RssFeedParser.java">
+      <file leaf-file-name="RefreshService.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/RefreshService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="40" selection-start="2978" selection-end="2978" vertical-scroll-proportion="0.0" vertical-offset="1245" max-vertical-offset="4440">
+            <state line="30" column="0" selection-start="688" selection-end="688" vertical-scroll-proportion="0.6793478" vertical-offset="0" max-vertical-offset="615">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Yapco_6/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="8" selection-start="1296" selection-end="1346" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="585">
               <folding />
             </state>
           </provider>
@@ -185,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Yapco_2/res/layout/item_row.xml" />
         <option value="$PROJECT_DIR$/Yapco_2/src/sk/cde/yapco/activities/ItemActivity.java" />
         <option value="$PROJECT_DIR$/Yapco_2/src/sk/cde/yapco/activities/ChannelListActivity.java" />
         <option value="$PROJECT_DIR$/Yapco_2/src/sk/cde/yapco/activities/ItemListActivity.java" />
@@ -229,13 +245,14 @@
         <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ItemListActivity.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/Yapco_6/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java" />
-        <option value="$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml" />
         <option value="$PROJECT_DIR$/Yapco_6/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/rss/RssFeedParser.java" />
         <option value="$PROJECT_DIR$/Yapco_5/src/sk/cde/yapco/Repository.java" />
         <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/Repository.java" />
         <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/UpdaterService.java" />
+        <option value="$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml" />
+        <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java" />
+        <option value="$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/RefreshService.java" />
       </list>
     </option>
   </component>
@@ -331,6 +348,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yapco_6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yapco" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="rss" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -354,6 +393,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yapco_6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-dev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Yapco_6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -760,11 +831,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1439" y="27" width="1922" height="1054" extended-state="7" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3065173" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3263158" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -773,21 +845,20 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22912423" sideWeight="0.32101616" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32974428" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3718919" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="21" y="461" width="1878" height="306" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32502398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3726977" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="21" y="461" width="1878" height="306" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24813631" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17838125" sideWeight="0.6789838" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17838125" sideWeight="0.6789838" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31401616" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.32960597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="1403" y="392" width="437" height="409" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3065173" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32502398" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -856,13 +927,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Yapco_3/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="64" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="783">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_4/res/values-sk/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="635" selection-end="635" vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="270" />
@@ -1043,7 +1107,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/res/layout/channel_row.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="53" selection-start="591" selection-end="591" vertical-scroll-proportion="-3.5294118" vertical-offset="0" max-vertical-offset="690" />
+        <state line="12" column="53" selection-start="591" selection-end="591" vertical-scroll-proportion="-3.5294118" vertical-offset="0" max-vertical-offset="690">
+          <folding />
+        </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
@@ -1065,7 +1131,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/res/layout/channel_info.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="39" selection-start="2292" selection-end="2292" vertical-scroll-proportion="-7.647059" vertical-offset="450" max-vertical-offset="1095" />
+        <state line="56" column="39" selection-start="2292" selection-end="2292" vertical-scroll-proportion="-7.647059" vertical-offset="450" max-vertical-offset="1095">
+          <folding />
+        </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
@@ -1073,17 +1141,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/res/layout/episodes_list_activity.xml">
       <provider editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="580" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="580">
+          <folding />
+        </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/episode_list_activity_options_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="24" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="375">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -1100,29 +1163,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/channel_context_menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="44" selection-start="569" selection-end="569" vertical-scroll-proportion="0.32392028" vertical-offset="0" max-vertical-offset="602" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="5" selection-start="4744" selection-end="4744" vertical-scroll-proportion="0.0" vertical-offset="1456" max-vertical-offset="2370">
+        <state line="13" column="44" selection-start="569" selection-end="569" vertical-scroll-proportion="0.32392028" vertical-offset="0" max-vertical-offset="602">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="12" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.5481728" vertical-offset="0" max-vertical-offset="602" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="850" selection-end="850" vertical-scroll-proportion="0.5730897" vertical-offset="0" max-vertical-offset="630" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Yapco_6/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="1219" selection-end="1269" vertical-scroll-proportion="0.6937799" vertical-offset="0" max-vertical-offset="627">
+        <state line="22" column="12" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.5481728" vertical-offset="0" max-vertical-offset="602">
           <folding />
         </state>
       </provider>
@@ -1144,6 +1192,20 @@
         <state line="145" column="0" selection-start="5206" selection-end="5206" vertical-scroll-proportion="0.33333334" vertical-offset="1745" max-vertical-offset="4035" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Yapco_6/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="8" selection-start="1296" selection-end="1346" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/episode_list_activity_options_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="14" selection-start="692" selection-end="692" vertical-scroll-proportion="0.48387095" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/Repository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="150" column="108" selection-start="5657" selection-end="5657" vertical-scroll-proportion="0.0" vertical-offset="1744" max-vertical-offset="4260">
@@ -1151,9 +1213,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/UpdaterService.java">
+    <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/UpdaterService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="44" selection-start="516" selection-end="516" vertical-scroll-proportion="0.48736462" vertical-offset="0" max-vertical-offset="810">
+        <state line="48" column="13" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="885">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yapco_6/res/menu/channel_list_activity_options_menu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="1038" selection-end="1191" vertical-scroll-proportion="-14.48" vertical-offset="103" max-vertical-offset="705">
+          <folding>
+            <element signature="e#209#227#0" expanded="true" />
+            <element signature="e#433#457#0" expanded="true" />
+            <element signature="e#661#688#0" expanded="true" />
+            <element signature="e#777#808#0" expanded="true" />
+            <element signature="e#944#974#0" expanded="true" />
+            <element signature="e#1103#1128#0" expanded="true" />
+            <element signature="e#1292#1306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/activities/ChannelListActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="163" column="4" selection-start="5389" selection-end="5537" vertical-scroll-proportion="0.0" vertical-offset="1863" max-vertical-offset="2490">
+          <folding>
+            <element signature="e#2347#2360#0" expanded="true" />
+            <element signature="e#2627#2642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Yapco_6/src/sk/cde/yapco/services/RefreshService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="688" selection-end="688" vertical-scroll-proportion="0.6793478" vertical-offset="0" max-vertical-offset="615">
           <folding />
         </state>
       </provider>

@@ -1,10 +1,11 @@
-package sk.cde.yapco;
+package sk.cde.yapco.services;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
+import sk.cde.yapco.Repository;
 
 /**
  * Created by mirek on 4.2.2014.
@@ -12,6 +13,7 @@ import android.widget.Toast;
 public class UpdaterService extends Service {
     private static final String TAG = "UpdaterService";
     private static final int DELAY = 30;
+    private boolean running;
 
     @Override
     public void onCreate() {
@@ -23,9 +25,11 @@ public class UpdaterService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStarted");
 
+        this.running = true;
+
         new Thread() {
             public void run() {
-                while(true){
+                while(running){
                     Repository repo = new Repository(getApplicationContext());
                     repo.refreshAllChannels();
                     Log.d(TAG, "channels are updated");
@@ -46,6 +50,8 @@ public class UpdaterService extends Service {
     public void onDestroy() {
         super.onDestroy();
         Log.d(TAG, "onDestroy");
+
+        this.running = false;
     }
 
     public IBinder onBind(Intent intent) {

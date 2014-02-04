@@ -25,8 +25,9 @@
         </activity>
         <activity android:name=".activities.ChannelInfoActivity"
                   android:parentActivityName=".activities.ChannelListActivity"/>
-        <service android:name=".UpdaterService"/>
+        <service android:name=".services.UpdaterService"/>
 
-        <service android:name=".UpdaterService"></service>
+        <service android:name=".services.UpdaterService"></service>
+        <service android:name=".services.RefreshService"/>
     </application>
 </manifest>
