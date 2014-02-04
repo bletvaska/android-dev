@@ -84,8 +84,8 @@ public class RssFeedParser {
                 link = readLink(parser);
             } else if (name.equalsIgnoreCase(ITEM)) {
                 episodes.add(readItem(parser));
-            } else if (name.equalsIgnoreCase(IMAGE)) {
-                imageUrl = readImage(parser);
+//            } else if (name.equalsIgnoreCase(IMAGE)) {
+//                imageUrl = readImage(parser);
             } else {
                 skip(parser);
             }

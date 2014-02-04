@@ -5,12 +5,12 @@ android development course in ness
 
 structure:
 * __HelloApplication__ - first project - activity, intents
-* __Yapco 1__ - activity to add RSS feed, XML parsing
+* __Yapco 1__ - Activities, Intents and RSS/XML parsing
 * __Yapco 2__ - SQL repository for feeds and episodes (items), add new feed and new episodes
 * __Yapco 3__ - ListView for feeds and episodes, SimpleCursorAdapter and custom CursorAdapter
-* __Yapco 4__ - menu system and navigation
-* __Yapco 5__ - refactoring and notifications
-* __Yapco 6__ - services
+* __Yapco 4__ - Menu system and navigation
+* __Yapco 5__ - Refactoring and notifications
+* __Yapco 6__ - Services
 
 ## Icons Used In Yapco Project
 

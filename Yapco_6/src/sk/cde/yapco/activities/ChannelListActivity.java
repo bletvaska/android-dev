@@ -12,6 +12,7 @@ import android.view.*;
 import android.widget.*;
 import sk.cde.yapco.Repository;
 import sk.cde.yapco.R;
+import sk.cde.yapco.UpdaterService;
 import sk.cde.yapco.rss.Channel;
 
 /**
@@ -146,6 +147,16 @@ public class ChannelListActivity extends Activity {
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         repository.deleteChannel(menuInfo.id);
         refresh();
+    }
+
+    public void startUpdaterService(MenuItem item){
+        Intent intent = new Intent(this, UpdaterService.class);
+        startService(intent);
+    }
+
+    public void stopUpdaterService(MenuItem item){
+        Intent intent = new Intent(this, UpdaterService.class);
+        stopService(intent);
     }
 
     // ================================= helper methods

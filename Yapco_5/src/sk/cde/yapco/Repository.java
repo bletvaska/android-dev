@@ -79,15 +79,15 @@ public class Repository {
             Intent intent = new Intent(context, ChannelListActivity.class);
             PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-            Notification notification = new Notification.Builder(context)
+            Notification.Builder notification = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle(context.getString(R.string.app_name))
                     .setContentText("There are " + counter + " new episodes.")
                     .setContentIntent(pIntent)
-                    .setAutoCancel(true)
-                    .build();
+                    .setAutoCancel(true);
+
             NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            manager.notify(0, notification);
+            manager.notify(0, notification.build());
         }
     }
 

@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -15,6 +16,7 @@ import sk.cde.yapco.rss.Channel;
 import sk.cde.yapco.rss.Item;
 import sk.cde.yapco.rss.RssFeedParser;
 
+import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
 
@@ -58,6 +60,8 @@ public class Repository {
                 null, null, null);
 
         cursor.moveToFirst();
+
+        Log.i(TAG, "Refreshing channel: " + cursor.getString(cursor.getColumnIndex(C_TITLE)));
         String podcastUrl = cursor.getString(cursor.getColumnIndex(C_RSS_FEED));
 
         RssFeedParser.ParseFeed pf = new RssFeedParser.ParseFeed();
@@ -80,15 +84,15 @@ public class Repository {
             Intent intent = new Intent(context, ChannelListActivity.class);
             PendingIntent pIntent = PendingIntent.getActivity(context, 0, intent, 0);
 
-            Notification notification = new Notification.Builder(context)
+            Notification.Builder notification = new Notification.Builder(context)
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle(context.getString(R.string.app_name))
                     .setContentText("There are " + counter + " new episodes.")
                     .setContentIntent(pIntent)
-                    .setAutoCancel(true)
-                    .build();
+                    .setAutoCancel(true);
+
             NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            manager.notify(0, notification);
+            manager.notify(0, notification.build());
         }
     }
 
@@ -139,8 +143,14 @@ public class Repository {
         values.put(C_MEDIA_LENGTH, item.mediaLength);
         values.put(C_MEDIA_TYPE, item.mediaType);
 
-        long rowId = db.insert(ITEM_TABLE_NAME, null, values);
-        Log.i(TAG, String.format("Episode '%s' inserted with rowid: %d", item.title, rowId));
+        long rowId = -1;
+        try{
+            rowId = db.insertOrThrow(ITEM_TABLE_NAME, null, values);
+            Log.i(TAG, String.format("Episode '%s' inserted with rowid: %d", item.title, rowId));
+        }catch(SQLiteConstraintException e){
+            Log.d(TAG, String.format("Episode '%s' Constraint Exception: %s", item.title, e.getMessage() ) );
+        }
+
         return rowId;
     }
 
@@ -205,7 +215,7 @@ public class Repository {
 
     private class DbHelper extends SQLiteOpenHelper {
         private static final String DB_NAME = "database.db";
-        private static final int DB_VERSION = 23;
+        private static final int DB_VERSION = 24;
 
         public DbHelper() {
             super(context, DB_NAME, null, DB_VERSION);

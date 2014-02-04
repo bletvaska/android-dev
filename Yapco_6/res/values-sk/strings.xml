@@ -10,4 +10,7 @@
     <string name="mark_all_as_read">Označiť všetko ako prečítané</string>
     <string name="play">Prehrať</string>
     <string name="mark_as_read">Označiť ako prečítané</string><string name="episodes">Episodes</string>
+    <string name="start_service">Start Updater Service</string>
+    <string name="start_updater_service">Stop Updater Service</string>
+    <string name="stop_updater_service">Stop Updater Service</string>
 </resources>
