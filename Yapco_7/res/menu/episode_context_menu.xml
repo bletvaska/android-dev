@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/play_item"
+          android:title="@string/play"
+            />
+    <item android:id="@+id/mark_as_read"
+          android:title="@string/mark_as_read"
+            />
+    <item android:id="@+id/visit_web_page"
+          android:title="@string/visit_web_page"
+            />
+</menu>

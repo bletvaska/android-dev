@@ -11,6 +11,7 @@ structure:
 * __Yapco 4__ - Menu system and navigation
 * __Yapco 5__ - Refactoring and notifications
 * __Yapco 6__ - Services
+* __Yapco 7__ - Application preferences and broadcast receivers
 
 ## Icons Used In Yapco Project
 

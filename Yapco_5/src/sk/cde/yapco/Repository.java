@@ -65,6 +65,8 @@ public class Repository {
         int counter = 0;
         try {
             channel = pf.get();
+            if( channel == null )
+                return;
             for( Item item : channel ){
                 if( insertItem( channelId, item) != -1 )
                     counter++;
@@ -202,7 +204,7 @@ public class Repository {
 
     private class DbHelper extends SQLiteOpenHelper {
         private static final String DB_NAME = "database.db";
-        private static final int DB_VERSION = 21;
+        private static final int DB_VERSION = 25;
 
         public DbHelper() {
             super(context, DB_NAME, null, DB_VERSION);

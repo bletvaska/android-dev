@@ -19,6 +19,21 @@
           android:title="@string/about_application"
             />
 
+    <item android:id="@+id/item_start_service"
+          android:title="@string/start_service"
+          android:onClick="onItemStartServiceClicked"
+            />
+
+    <item android:id="@+id/item_stop_service"
+          android:title="@string/stop_service"
+          android:onClick="onItemStopServiceClicked"
+            />
+
+    <item android:id="@+id/item_refresh_service"
+          android:title="@string/start_refresh_service"
+          android:onClick="onItemStartRefreshServiceClicked"
+            />
+
     <item android:id="@+id/quit"
           android:icon="@drawable/ic_off"
           android:title="@string/exit"

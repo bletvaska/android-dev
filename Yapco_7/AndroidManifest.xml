@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="sk.cde.yapco"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="14"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name=".YapcoApplication">
+        <activity android:name=".activities.AddFeedActivity"
+                  android:label="@string/app_name">
+        </activity>
+
+        <activity android:name=".activities.ChannelListActivity"
+                  >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.ItemListActivity"
+                  android:parentActivityName=".activities.ChannelListActivity">
+        </activity>
+        <activity android:name=".activities.ChannelInfoActivity"
+                  android:parentActivityName=".activities.ChannelListActivity"/>
+        <activity android:name=".activities.PrefsActivity"/>
+        <service android:name=".services.UpdaterService"/>
+
+        <service android:name=".services.UpdaterService"></service>
+        <service android:name=".services.RefreshService"/>
+        <receiver android:name=".receivers.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".receivers.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

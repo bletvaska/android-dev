@@ -23,5 +23,9 @@
         <activity android:name=".activities.ItemListActivity"
                   android:parentActivityName=".activities.ChannelListActivity">
         </activity>
+
+        <service android:name=".services.UpdateService"/>
+        <service android:name=".services.RefreshService"/>
+
     </application>
 </manifest>

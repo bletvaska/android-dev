@@ -215,7 +215,7 @@ public class Repository {
 
     private class DbHelper extends SQLiteOpenHelper {
         private static final String DB_NAME = "database.db";
-        private static final int DB_VERSION = 24;
+        private static final int DB_VERSION = 25;
 
         public DbHelper() {
             super(context, DB_NAME, null, DB_VERSION);

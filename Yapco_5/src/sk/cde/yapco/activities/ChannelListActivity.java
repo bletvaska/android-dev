@@ -13,12 +13,23 @@ import android.widget.*;
 import sk.cde.yapco.Repository;
 import sk.cde.yapco.R;
 import sk.cde.yapco.rss.Channel;
+import sk.cde.yapco.services.RefreshService;
+import sk.cde.yapco.services.UpdateService;
 
 /**
  * Created by mirek on 21.1.2014.
  */
 public class ChannelListActivity extends Activity {
     private static final String TAG = "ChannelListActivity";
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy");
+
+        onItemStopServiceClicked(null);
+    }
+
     private Repository repository;
 
     @Override
@@ -94,6 +105,21 @@ public class ChannelListActivity extends Activity {
     public void updateAllChannels(MenuItem item){
         repository.refreshAllChannels();
         refresh();
+    }
+
+    public void onItemStartServiceClicked(MenuItem item){
+        Intent intent = new Intent(this, UpdateService.class);
+        startService(intent);
+    }
+
+    public void onItemStopServiceClicked(MenuItem item){
+        Intent intent = new Intent(this, UpdateService.class);
+        stopService(intent);
+    }
+
+    public void onItemStartRefreshServiceClicked(MenuItem item){
+        Intent intent = new Intent(this, RefreshService.class);
+        startService(intent);
     }
 
     // ============================================= context menu and options

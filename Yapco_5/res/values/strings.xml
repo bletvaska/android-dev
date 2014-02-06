@@ -17,5 +17,8 @@
     <string name="play">Play</string>
     <string name="mark_as_read">Mark as read</string>
     <string name="cancel">Cancel</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+    <string name="start_refresh_service">Refresh Service</string>
 
 </resources>
